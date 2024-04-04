@@ -12,9 +12,9 @@
       "dest": "/manage.py"
     }
   ],
-   "functions": [{
+   "functions": {
         "api/**": {
             "excludeFiles": "{.next,*.cache,node_modules,public,app}/**"
         }
-    }]
+    }
 }
