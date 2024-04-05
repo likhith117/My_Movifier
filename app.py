@@ -11,10 +11,19 @@ import requests
 from datetime import date, datetime
 
 # load the nlp model and tfidf vectorizer from disk
-filename = 'nlp_model.pkl'
-clf = pickle.load(open(filename, 'rb'))
-vectorizer = pickle.load(open('tranform.pkl','rb'))
-    
+import os
+
+
+# Get the directory of the current script
+current_directory = os.path.dirname(os.path.abspath(__file__))
+
+# Construct the relative path to nlp_model.pkl
+filename = os.path.join(current_directory, "nlp_model.pkl")
+
+# Load the model
+clf = pickle.load(open(filename, "rb"))
+
+
 # converting list of string to list (eg. "["abc","def"]" to ["abc","def"])
 def convert_to_list(my_list):
     my_list = my_list.split('","')
@@ -50,7 +59,6 @@ def populate_matches():
     movie_cards = {"https://image.tmdb.org/t/p/original"+movies_list[i]['poster_path'] if movies_list[i]['poster_path'] else "/static/movie_placeholder.jpeg": [movies_list[i]['title'],movies_list[i]['original_title'],movies_list[i]['vote_average'],datetime.strptime(movies_list[i]['release_date'], '%Y-%m-%d').year if movies_list[i]['release_date'] else "N/A", movies_list[i]['id']] for i in range(len(movies_list))}
 
     return render_template('recommend.html',movie_cards=movie_cards);
-
 
 
 @app.route("/recommend",methods=["POST"])
