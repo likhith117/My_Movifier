@@ -60,13 +60,15 @@
 }
 
 .footer {
-	color: #e4e0e0;
-	background-color: #4b09e5da;
-	text-align:center;
-	position: fixed;
-	bottom: 0;
- 	width: 100%;
+  color: #e4e0e0;
+  background-color: #4b09e5da;
+  text-align:center;
+  position: fixed; /* Fixed position */
+  bottom: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it's above other content */
 }
+
 
 .social-icons {
 	margin-left: 15px;
@@ -307,4 +309,26 @@ h6 {
 .fail {
 	display: none;
 	color: white;
+}
+/* Enlarge social icons */
+.social .social-icons {
+  font-size: 50px;
+}
+
+/* Position social icons to the right */
+.social {
+  position: centre;
+  right: 0px;
+  bottom:20px;
+  top: 0%;
+  transform: translateY(-50%);
+}
+
+/* Enlarge name in the right corner */
+.credits {
+  font-size: 18px; /* Adjust font size as needed */
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  color: white; /* Ensure the text is visible */
 }
